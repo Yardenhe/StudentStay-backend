@@ -1,0 +1,31 @@
+[
+  {
+    "vendor": "Muki Car2",
+    "speed": 123,
+    "_id": "wYrey",
+    "owner": {
+      "_id": "u102",
+      "fullname": "Muki Ba"
+    }
+  },
+  {
+    "vendor": "audu",
+    "speed": 555,
+    "_id": "omFk9",
+    "owner": {
+      "_id": "9lVZI",
+      "fullname": "Muki Ba"
+    }
+  },
+  {
+    "vendor": "audu",
+    "speed": 555,
+    "_id": "1difQ",
+    "createdAt": 1702405171651,
+    "owner": {
+      "_id": "u101",
+      "fullname": "Puki Ja",
+      "isAdmin": true
+    }
+  }
+]

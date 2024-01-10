@@ -1,0 +1,19 @@
+[{
+        "vendor": "Puki Car",
+        "speed": 220,
+        "_id": "WepLV",
+        "owner": {
+            "_id": "u101",
+            "fullname": "Puki Ja"
+        }
+    },
+    {
+        "vendor": "Muki Car",
+        "speed": 123,
+        "_id": "wYrey",
+        "owner": {
+            "_id": "u102",
+            "fullname": "Muki Ba"
+        }
+    }
+]
