@@ -1,5 +1,5 @@
 [{
-        "vendor": "Puki Car",
+        "vendor": "Puki Stay",
         "speed": 220,
         "_id": "WepLV",
         "owner": {
@@ -8,7 +8,7 @@
         }
     },
     {
-        "vendor": "Muki Car",
+        "vendor": "Muki Stay",
         "speed": 123,
         "_id": "wYrey",
         "owner": {

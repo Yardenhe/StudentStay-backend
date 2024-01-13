@@ -1,8 +1,8 @@
-async function onGetCars() {
+async function onGetStays() {
     const elPre = document.querySelector('pre')
 
-    const res = await fetch('api/car')
-    const cars = await res.json()
+    const res = await fetch('api/stay')
+    const stays = await res.json()
 
-    elPre.innerText = JSON.stringify(cars, null, 2)
+    elPre.innerText = JSON.stringify(stays, null, 2)
 }

@@ -19,11 +19,11 @@ app.use(cookieParser())
 
 
 // Routes
-import { carRoutes } from './api/car/car.routes.js'
+import { stayRoutes } from './api/stay/stay.routes.js'
 import { userRoutes } from './api/user/user.routes.js'
 import { authRoutes } from './api/auth/auth.routes.js'
 
-app.use('/api/car', carRoutes)
+app.use('/api/stay', stayRoutes)
 app.use('/api/user', userRoutes)
 app.use('/api/auth', authRoutes)
 
@@ -34,9 +34,9 @@ app.get('/', (req, res) => {
 })
 
 app.get('/puki', (req, res) => {
-    let visitCount = +req.cookies.visitCount
-    console.log(visitCount);
-    res.cookie('visitCount', visitCount + 1 || 1)
+    let stayCount = +req.cookies.stayCount
+    console.log(stayCount);
+    res.cookie('stayCount', stayCount + 1 || 1)
     res.send(`<h1>Hi Puki</h1>`)
 })
 
