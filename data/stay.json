@@ -24,12 +24,7 @@
       "Pets allowed",
       "Cooking basics"
     ],
-    "labels": [
-      "Top of the world",
-      "Trending",
-      "Play",
-      "Tropical"
-    ],
+    "labels": ["Top of the world", "Trending", "Play", "Tropical"],
     "host": {
       "_id": "u101",
       "fullname": "Davit Pok",
@@ -48,16 +43,10 @@
         "id": "madeId",
         "txt": "Very helpful hosts. Cooked traditional...",
         "rate": 4,
-        "by": {
-          "_id": "u102",
-          "fullname": "user2",
-          "imgUrl": "/img/img2.jpg"
-        }
+        "by": { "_id": "u102", "fullname": "user2", "imgUrl": "/img/img2.jpg" }
       }
     ],
-    "likedByUsers": [
-      "mini-user"
-    ]
+    "likedByUsers": ["mini-user"]
   },
   {
     "_id": "622f337a75c7d36e498aaaf8",
@@ -368,13 +357,7 @@
     "likedByUsers": [],
     "beds": 1,
     "propertyType": "home",
-    "labels": [
-      "Beachfront",
-      "Rooms",
-      "Cabins!",
-      "Top of the world",
-      "Islands"
-    ]
+    "labels": ["Beachfront", "Rooms", "Cabins!", "Top of the world", "Islands"]
   },
   {
     "_id": "622f337a75c7d36e498aaafa",
@@ -1330,13 +1313,7 @@
     "likedByUsers": [],
     "beds": 1,
     "propertyType": "guesthouse",
-    "labels": [
-      "Islands",
-      "Islands",
-      "Treehouses",
-      "Castles",
-      "National parks"
-    ]
+    "labels": ["Islands", "Islands", "Treehouses", "Castles", "National parks"]
   },
   {
     "_id": "622f337a75c7d36e498aaafe",
@@ -2632,13 +2609,7 @@
     "likedByUsers": [],
     "beds": 3,
     "propertyType": "guesthouse",
-    "labels": [
-      "Skiing",
-      "Treehouses",
-      "Mansions",
-      "OMG!",
-      "Skiing"
-    ]
+    "labels": ["Skiing", "Treehouses", "Mansions", "OMG!", "Skiing"]
   },
   {
     "_id": "622f337a75c7d36e498aab03",
@@ -4305,14 +4276,7 @@
     "likedByUsers": [],
     "beds": 1,
     "propertyType": "apartment",
-    "labels": [
-      "Tropical",
-      "Skiing",
-      "Lakes",
-      "Farms",
-      "Castles",
-      "Mansions"
-    ]
+    "labels": ["Tropical", "Skiing", "Lakes", "Farms", "Castles", "Mansions"]
   },
   {
     "_id": "622f337a75c7d36e498aab09",
@@ -4668,12 +4632,7 @@
     "likedByUsers": [],
     "beds": 1,
     "propertyType": "apartment",
-    "labels": [
-      "Skiing",
-      "Beachfront",
-      "Treehouses",
-      "Rooms"
-    ]
+    "labels": ["Skiing", "Beachfront", "Treehouses", "Rooms"]
   },
   {
     "_id": "622f337a75c7d36e498aab0c",
@@ -5133,12 +5092,7 @@
     "likedByUsers": [],
     "beds": 4,
     "propertyType": "home",
-    "labels": [
-      "Mansions",
-      "Skiing",
-      "Beach",
-      "Treehouses"
-    ]
+    "labels": ["Mansions", "Skiing", "Beach", "Treehouses"]
   },
   {
     "_id": "622f337a75c7d36e498aab0e",
@@ -5434,12 +5388,7 @@
     "likedByUsers": [],
     "beds": 5,
     "propertyType": "hotel",
-    "labels": [
-      "Tiny homes",
-      "Mansions",
-      "Treehouses",
-      "Amazing views"
-    ]
+    "labels": ["Tiny homes", "Mansions", "Treehouses", "Amazing views"]
   },
   {
     "_id": "622f337a75c7d36e498aab0f",
@@ -5598,12 +5547,7 @@
     "likedByUsers": [],
     "beds": 3,
     "propertyType": "guesthouse",
-    "labels": [
-      "Beach",
-      "Design",
-      "Beach",
-      "Vineyards"
-    ]
+    "labels": ["Beach", "Design", "Beach", "Vineyards"]
   },
   {
     "_id": "622f337a75c7d36e498aab10",
@@ -7472,11 +7416,7 @@
     "likedByUsers": [],
     "beds": 3,
     "propertyType": "guesthouse",
-    "labels": [
-      "Beachfront",
-      "Rooms",
-      "Iconic cities"
-    ]
+    "labels": ["Beachfront", "Rooms", "Iconic cities"]
   },
   {
     "_id": "622f337a75c7d36e498aab18",
@@ -7762,12 +7702,7 @@
     "likedByUsers": [],
     "beds": 2,
     "propertyType": "hotel",
-    "labels": [
-      "OMG!",
-      "Islands",
-      "Beachfront",
-      "Historical homes"
-    ]
+    "labels": ["OMG!", "Islands", "Beachfront", "Historical homes"]
   },
   {
     "_id": "622f337a75c7d36e498aab19",
@@ -8968,13 +8903,7 @@
     "likedByUsers": [],
     "beds": 3,
     "propertyType": "guesthouse",
-    "labels": [
-      "Amazing pools",
-      "Cabins!",
-      "Beach",
-      "Design",
-      "Mansions"
-    ]
+    "labels": ["Amazing pools", "Cabins!", "Beach", "Design", "Mansions"]
   },
   {
     "_id": "622f337a75c7d36e498aab1e",
@@ -9053,12 +8982,7 @@
     "likedByUsers": [],
     "beds": 1,
     "propertyType": "hotel",
-    "labels": [
-      "Countryside",
-      "Off-the-grid",
-      "Islands",
-      "Treehouses"
-    ]
+    "labels": ["Countryside", "Off-the-grid", "Islands", "Treehouses"]
   },
   {
     "_id": "622f337a75c7d36e498aab1f",
@@ -9449,11 +9373,7 @@
     "likedByUsers": [],
     "beds": 5,
     "propertyType": "home",
-    "labels": [
-      "Beach",
-      "Historical homes",
-      "Beach"
-    ]
+    "labels": ["Beach", "Historical homes", "Beach"]
   },
   {
     "_id": "622f337a75c7d36e498aab21",
@@ -9574,12 +9494,7 @@
     "likedByUsers": [],
     "beds": 2,
     "propertyType": "guesthouse",
-    "labels": [
-      "Top of the world",
-      "Treehouses",
-      "Tropical",
-      "Rooms"
-    ]
+    "labels": ["Top of the world", "Treehouses", "Tropical", "Rooms"]
   },
   {
     "_id": "622f337a75c7d36e498aab22",
@@ -10002,12 +9917,7 @@
     "likedByUsers": [],
     "beds": 4,
     "propertyType": "hotel",
-    "labels": [
-      "Skiing",
-      "Cabins!",
-      "Amazing pools",
-      "Off-the-grid"
-    ]
+    "labels": ["Skiing", "Cabins!", "Amazing pools", "Off-the-grid"]
   },
   {
     "_id": "622f337a75c7d36e498aab24",
@@ -10169,11 +10079,7 @@
     "likedByUsers": [],
     "beds": 4,
     "propertyType": "home",
-    "labels": [
-      "Lakefront",
-      "OMG!",
-      "Amazing pools"
-    ]
+    "labels": ["Lakefront", "OMG!", "Amazing pools"]
   },
   {
     "_id": "622f337a75c7d36e498aab25",
@@ -10477,12 +10383,7 @@
     "likedByUsers": [],
     "beds": 3,
     "propertyType": "apartment",
-    "labels": [
-      "Tiny homes",
-      "Islands",
-      "Lakes",
-      "National parks"
-    ]
+    "labels": ["Tiny homes", "Islands", "Lakes", "National parks"]
   },
   {
     "_id": "622f337a75c7d36e498aab26",
@@ -12495,12 +12396,7 @@
     "likedByUsers": [],
     "beds": 5,
     "propertyType": "home",
-    "labels": [
-      "Beach",
-      "Iconic cities",
-      "Farms",
-      "Historical homes"
-    ]
+    "labels": ["Beach", "Iconic cities", "Farms", "Historical homes"]
   },
   {
     "_id": "622f337a75c7d36e498aab30",
@@ -12986,12 +12882,7 @@
     "likedByUsers": [],
     "beds": 1,
     "propertyType": "guesthouse",
-    "labels": [
-      "OMG!",
-      "Iconic cities",
-      "Top of the world",
-      "National parks"
-    ]
+    "labels": ["OMG!", "Iconic cities", "Top of the world", "National parks"]
   },
   {
     "_id": "622f337a75c7d36e498aab32",
@@ -13517,14 +13408,7 @@
     "likedByUsers": [],
     "beds": 5,
     "propertyType": "hotel",
-    "labels": [
-      "Cabins!",
-      "Beachfront",
-      "Tropical",
-      "Farms",
-      "Cabins!",
-      "Farms"
-    ]
+    "labels": ["Cabins!", "Beachfront", "Tropical", "Farms", "Cabins!", "Farms"]
   },
   {
     "_id": "622f337a75c7d36e498aab34",
@@ -14356,12 +14240,7 @@
     "likedByUsers": [],
     "beds": 2,
     "propertyType": "guesthouse",
-    "labels": [
-      "Skiing",
-      "Treehouses",
-      "Tropical",
-      "Tiny homes"
-    ]
+    "labels": ["Skiing", "Treehouses", "Tropical", "Tiny homes"]
   },
   {
     "_id": "622f337a75c7d36e498aab37",
@@ -14526,12 +14405,7 @@
     "likedByUsers": [],
     "beds": 4,
     "propertyType": "apartment",
-    "labels": [
-      "Off-the-grid",
-      "Top of the world",
-      "Off-the-grid",
-      "Beachfront"
-    ]
+    "labels": ["Off-the-grid", "Top of the world", "Off-the-grid", "Beachfront"]
   },
   {
     "_id": "622f337a75c7d36e498aab39",
@@ -14685,11 +14559,7 @@
     "likedByUsers": [],
     "beds": 1,
     "propertyType": "apartment",
-    "labels": [
-      "Lakes",
-      "Treehouses",
-      "Mansions"
-    ]
+    "labels": ["Lakes", "Treehouses", "Mansions"]
   },
   {
     "_id": "622f337a75c7d36e498aab3a",
@@ -15763,11 +15633,7 @@
     "likedByUsers": [],
     "beds": 3,
     "propertyType": "hotel",
-    "labels": [
-      "Design",
-      "Amazing pools",
-      "Islands"
-    ]
+    "labels": ["Design", "Amazing pools", "Islands"]
   },
   {
     "_id": "622f337a75c7d36e498aab3e",
@@ -17334,12 +17200,7 @@
     "likedByUsers": [],
     "beds": 5,
     "propertyType": "hotel",
-    "labels": [
-      "Historical homes",
-      "Lakes",
-      "Amazing views",
-      "Countryside"
-    ]
+    "labels": ["Historical homes", "Lakes", "Amazing views", "Countryside"]
   },
   {
     "_id": "622f337a75c7d36e498aab44",
@@ -18458,12 +18319,7 @@
     "likedByUsers": [],
     "beds": 2,
     "propertyType": "home",
-    "labels": [
-      "National parks",
-      "Castles",
-      "Off-the-grid",
-      "Vineyards"
-    ]
+    "labels": ["National parks", "Castles", "Off-the-grid", "Vineyards"]
   },
   {
     "_id": "622f337a75c7d36e498aab49",
@@ -18763,12 +18619,7 @@
     "likedByUsers": [],
     "beds": 3,
     "propertyType": "hotel",
-    "labels": [
-      "Lakes",
-      "Beachfront",
-      "Tiny homes",
-      "Castles"
-    ]
+    "labels": ["Lakes", "Beachfront", "Tiny homes", "Castles"]
   },
   {
     "_id": "622f337a75c7d36e498aab4a",
@@ -19374,13 +19225,7 @@
     "likedByUsers": [],
     "beds": 3,
     "propertyType": "hotel",
-    "labels": [
-      "Amazing pools",
-      "OMG!",
-      "Lakefront",
-      "Castles",
-      "Amazing views"
-    ]
+    "labels": ["Amazing pools", "OMG!", "Lakefront", "Castles", "Amazing views"]
   },
   {
     "_id": "622f337a75c7d36e498aab4c",
@@ -20645,11 +20490,7 @@
     "likedByUsers": [],
     "beds": 5,
     "propertyType": "home",
-    "labels": [
-      "Tiny homes",
-      "Amazing pools",
-      "Beach"
-    ]
+    "labels": ["Tiny homes", "Amazing pools", "Beach"]
   },
   {
     "_id": "622f337a75c7d36e498aab51",
@@ -22968,11 +22809,7 @@
     "likedByUsers": [],
     "beds": 4,
     "propertyType": "guesthouse",
-    "labels": [
-      "Top of the world",
-      "Top of the world",
-      "Beach"
-    ]
+    "labels": ["Top of the world", "Top of the world", "Beach"]
   },
   {
     "_id": "622f337a75c7d36e498aab5a",
@@ -23262,13 +23099,7 @@
     "likedByUsers": [],
     "beds": 3,
     "propertyType": "apartment",
-    "labels": [
-      "Lakes",
-      "Design",
-      "Castles",
-      "National parks",
-      "Skiing"
-    ]
+    "labels": ["Lakes", "Design", "Castles", "National parks", "Skiing"]
   },
   {
     "_id": "622f337a75c7d36e498aab5b",
@@ -23441,11 +23272,7 @@
     "likedByUsers": [],
     "beds": 5,
     "propertyType": "hotel",
-    "labels": [
-      "OMG!",
-      "Amazing pools",
-      "Rooms"
-    ]
+    "labels": ["OMG!", "Amazing pools", "Rooms"]
   },
   {
     "_id": "622f337b75c7d36e498aab5c",
@@ -24832,11 +24659,7 @@
     "likedByUsers": [],
     "beds": 2,
     "propertyType": "guesthouse",
-    "labels": [
-      "Islands",
-      "Tropical",
-      "Skiing"
-    ]
+    "labels": ["Islands", "Tropical", "Skiing"]
   },
   {
     "_id": "622f337b75c7d36e498aab61",
@@ -24954,13 +24777,7 @@
     "likedByUsers": [],
     "beds": 3,
     "propertyType": "apartment",
-    "labels": [
-      "Tropical",
-      "Farms",
-      "Farms",
-      "Mansions",
-      "Design"
-    ]
+    "labels": ["Tropical", "Farms", "Farms", "Mansions", "Design"]
   },
   {
     "_id": "622f337b75c7d36e498aab62",
@@ -25416,12 +25233,7 @@
     "likedByUsers": [],
     "beds": 1,
     "propertyType": "apartment",
-    "labels": [
-      "Rooms",
-      "Rooms",
-      "Vineyards",
-      "Countryside"
-    ]
+    "labels": ["Rooms", "Rooms", "Vineyards", "Countryside"]
   },
   {
     "_id": "622f337b75c7d36e498aab65",
@@ -25629,11 +25441,7 @@
     "likedByUsers": [],
     "beds": 2,
     "propertyType": "apartment",
-    "labels": [
-      "Cabins!",
-      "Tiny homes",
-      "Skiing"
-    ]
+    "labels": ["Cabins!", "Tiny homes", "Skiing"]
   },
   {
     "_id": "622f337b75c7d36e498aab66",
@@ -26227,11 +26035,7 @@
     "likedByUsers": [],
     "beds": 1,
     "propertyType": "hotel",
-    "labels": [
-      "Amazing pools",
-      "National parks",
-      "Historical homes"
-    ]
+    "labels": ["Amazing pools", "National parks", "Historical homes"]
   },
   {
     "_id": "622f337b75c7d36e498aab68",
@@ -26546,13 +26350,7 @@
     "likedByUsers": [],
     "beds": 3,
     "propertyType": "hotel",
-    "labels": [
-      "Castles",
-      "Off-the-grid",
-      "Countryside",
-      "OMG!",
-      "Farms"
-    ]
+    "labels": ["Castles", "Off-the-grid", "Countryside", "OMG!", "Farms"]
   },
   {
     "_id": "622f337b75c7d36e498aab69",
@@ -26856,13 +26654,7 @@
     "likedByUsers": [],
     "beds": 3,
     "propertyType": "guesthouse",
-    "labels": [
-      "Rooms",
-      "Rooms",
-      "Off-the-grid",
-      "Beach",
-      "Islands"
-    ]
+    "labels": ["Rooms", "Rooms", "Off-the-grid", "Beach", "Islands"]
   },
   {
     "_id": "622f337b75c7d36e498aab6a",
@@ -26994,12 +26786,7 @@
     "likedByUsers": [],
     "beds": 3,
     "propertyType": "guesthouse",
-    "labels": [
-      "Countryside",
-      "Lakefront",
-      "Top of the world",
-      "Off-the-grid"
-    ]
+    "labels": ["Countryside", "Lakefront", "Top of the world", "Off-the-grid"]
   },
   {
     "_id": "622f337b75c7d36e498aab6b",
@@ -27717,13 +27504,7 @@
     "likedByUsers": [],
     "beds": 5,
     "propertyType": "guesthouse",
-    "labels": [
-      "OMG!",
-      "Lakefront",
-      "Tropical",
-      "OMG!",
-      "Islands"
-    ]
+    "labels": ["OMG!", "Lakefront", "Tropical", "OMG!", "Islands"]
   },
   {
     "_id": "622f337b75c7d36e498aab6e",
@@ -28191,12 +27972,7 @@
     "likedByUsers": [],
     "beds": 3,
     "propertyType": "guesthouse",
-    "labels": [
-      "Beachfront",
-      "Beach",
-      "Amazing pools",
-      "Tropical"
-    ]
+    "labels": ["Beachfront", "Beach", "Amazing pools", "Tropical"]
   },
   {
     "_id": "622f337b75c7d36e498aab71",
@@ -28415,11 +28191,7 @@
     "likedByUsers": [],
     "beds": 1,
     "propertyType": "apartment",
-    "labels": [
-      "Tiny homes",
-      "Mansions",
-      "Cabins!"
-    ]
+    "labels": ["Tiny homes", "Mansions", "Cabins!"]
   },
   {
     "_id": "622f337b75c7d36e498aab73",
@@ -28724,11 +28496,7 @@
     "likedByUsers": [],
     "beds": 5,
     "propertyType": "apartment",
-    "labels": [
-      "Farms",
-      "Vineyards",
-      "OMG!"
-    ]
+    "labels": ["Farms", "Vineyards", "OMG!"]
   },
   {
     "_id": "622f337b75c7d36e498aab74",
@@ -29458,13 +29226,7 @@
     "likedByUsers": [],
     "beds": 5,
     "propertyType": "guesthouse",
-    "labels": [
-      "Farms",
-      "Cabins!",
-      "Amazing pools",
-      "Tropical",
-      "Mansions"
-    ]
+    "labels": ["Farms", "Cabins!", "Amazing pools", "Tropical", "Mansions"]
   },
   {
     "_id": "622f337b75c7d36e498aab77",
@@ -29847,14 +29609,7 @@
     "likedByUsers": [],
     "beds": 4,
     "propertyType": "apartment",
-    "labels": [
-      "Skiing",
-      "Lakes",
-      "Tropical",
-      "Islands",
-      "Rooms",
-      "Mansions"
-    ]
+    "labels": ["Skiing", "Lakes", "Tropical", "Islands", "Rooms", "Mansions"]
   },
   {
     "_id": "622f337b75c7d36e498aab79",
@@ -30138,12 +29893,7 @@
     "likedByUsers": [],
     "beds": 3,
     "propertyType": "hotel",
-    "labels": [
-      "Design",
-      "Beach",
-      "Off-the-grid",
-      "Beach"
-    ]
+    "labels": ["Design", "Beach", "Off-the-grid", "Beach"]
   },
   {
     "_id": "622f337b75c7d36e498aab7a",
@@ -31136,11 +30886,7 @@
     "likedByUsers": [],
     "beds": 4,
     "propertyType": "home",
-    "labels": [
-      "Tropical",
-      "Lakes",
-      "Mansions"
-    ]
+    "labels": ["Tropical", "Lakes", "Mansions"]
   },
   {
     "_id": "622f337b75c7d36e498aab7e",
@@ -32290,11 +32036,7 @@
     "likedByUsers": [],
     "beds": 1,
     "propertyType": "hotel",
-    "labels": [
-      "Castles",
-      "Cabins!",
-      "Iconic cities"
-    ]
+    "labels": ["Castles", "Cabins!", "Iconic cities"]
   },
   {
     "_id": "622f337b75c7d36e498aab83",
@@ -33157,14 +32899,7 @@
     "likedByUsers": [],
     "beds": 2,
     "propertyType": "guesthouse",
-    "labels": [
-      "Skiing",
-      "OMG!",
-      "Castles",
-      "Castles",
-      "Castles",
-      "Farms"
-    ]
+    "labels": ["Skiing", "OMG!", "Castles", "Castles", "Castles", "Farms"]
   },
   {
     "_id": "622f337b75c7d36e498aab87",
@@ -33383,11 +33118,7 @@
     "likedByUsers": [],
     "beds": 3,
     "propertyType": "apartment",
-    "labels": [
-      "Lakes",
-      "Countryside",
-      "Historical homes"
-    ]
+    "labels": ["Lakes", "Countryside", "Historical homes"]
   },
   {
     "_id": "622f337b75c7d36e498aab88",
@@ -34469,11 +34200,7 @@
     "likedByUsers": [],
     "beds": 1,
     "propertyType": "home",
-    "labels": [
-      "Lakes",
-      "Amazing views",
-      "OMG!"
-    ]
+    "labels": ["Lakes", "Amazing views", "OMG!"]
   },
   {
     "_id": "622f337b75c7d36e498aab8d",
@@ -35656,11 +35383,7 @@
     "likedByUsers": [],
     "beds": 1,
     "propertyType": "hotel",
-    "labels": [
-      "Mansions",
-      "Amazing views",
-      "Cabins!"
-    ]
+    "labels": ["Mansions", "Amazing views", "Cabins!"]
   },
   {
     "_id": "622f337b75c7d36e498aab92",
@@ -35676,13 +35399,7 @@
     "price": 85,
     "summary": "We are renting a private basement apartment in our home. The apartment space is totally private, nothing shared. It has a separate bedroom, bathroom and kitchenette with mini fridge and coffee maker (there is no stove for cooking).  You will have use of a hair dryer. There are small windows in the bedroom and kitchenette area. The bathroom and kitchenette are all newly built. Full size bed sleeps 2 people. We cannot accommodate more than 2 people, sorry!",
     "capacity": 2,
-    "amenities": [
-      "Internet",
-      "Wifi",
-      "Heating",
-      "Washer",
-      "Dryer"
-    ],
+    "amenities": ["Internet", "Wifi", "Heating", "Washer", "Dryer"],
     "bathrooms": 1,
     "bedrooms": 1,
     "roomType": "Entire home/apt",
@@ -36213,14 +35930,7 @@
     "likedByUsers": [],
     "beds": 5,
     "propertyType": "home",
-    "labels": [
-      "OMG!",
-      "Farms",
-      "Skiing",
-      "Castles",
-      "Beach",
-      "National parks"
-    ]
+    "labels": ["OMG!", "Farms", "Skiing", "Castles", "Beach", "National parks"]
   },
   {
     "_id": "622f337b75c7d36e498aab94",
@@ -36972,13 +36682,7 @@
     "likedByUsers": [],
     "beds": 5,
     "propertyType": "guesthouse",
-    "labels": [
-      "Countryside",
-      "Tiny homes",
-      "Skiing",
-      "Off-the-grid",
-      "Farms"
-    ]
+    "labels": ["Countryside", "Tiny homes", "Skiing", "Off-the-grid", "Farms"]
   },
   {
     "_id": "622f337b75c7d36e498aab97",
@@ -37529,13 +37233,7 @@
     "likedByUsers": [],
     "beds": 3,
     "propertyType": "apartment",
-    "labels": [
-      "Lakefront",
-      "Beachfront",
-      "Tropical",
-      "Tropical",
-      "Design"
-    ]
+    "labels": ["Lakefront", "Beachfront", "Tropical", "Tropical", "Design"]
   },
   {
     "_id": "622f337b75c7d36e498aab99",
@@ -40124,11 +39822,7 @@
     "likedByUsers": [],
     "beds": 2,
     "propertyType": "home",
-    "labels": [
-      "Vineyards",
-      "Off-the-grid",
-      "Amazing pools"
-    ]
+    "labels": ["Vineyards", "Off-the-grid", "Amazing pools"]
   },
   {
     "_id": "622f337b75c7d36e498aaba3",
@@ -40529,14 +40223,7 @@
     "likedByUsers": [],
     "beds": 3,
     "propertyType": "home",
-    "labels": [
-      "Skiing",
-      "Farms",
-      "Tiny homes",
-      "Beach",
-      "Cabins!",
-      "Design"
-    ]
+    "labels": ["Skiing", "Farms", "Tiny homes", "Beach", "Cabins!", "Design"]
   },
   {
     "_id": "622f337b75c7d36e498aaba5",
@@ -41584,12 +41271,7 @@
     "likedByUsers": [],
     "beds": 3,
     "propertyType": "hotel",
-    "labels": [
-      "Islands",
-      "Countryside",
-      "Skiing",
-      "Amazing views"
-    ]
+    "labels": ["Islands", "Countryside", "Skiing", "Amazing views"]
   },
   {
     "_id": "622f337b75c7d36e498aaba9",
@@ -42931,11 +42613,7 @@
     "likedByUsers": [],
     "beds": 1,
     "propertyType": "guesthouse",
-    "labels": [
-      "Amazing pools",
-      "Tropical",
-      "Amazing pools"
-    ]
+    "labels": ["Amazing pools", "Tropical", "Amazing pools"]
   },
   {
     "_id": "622f337b75c7d36e498aabae",
@@ -43555,68 +43233,6 @@
     "likedByUsers": [],
     "beds": 4,
     "propertyType": "hotel",
-    "labels": [
-      "Historical homes",
-      "Amazing views",
-      "Tropical"
-    ]
-  },
-  {
-    "type": "test",
-    "price": 666,
-    "_id": "ElwLM"
-  },
-  {
-    "name": "1stt FIRST SAVED PROPERTY",
-    "type": "National parks",
-    "imgUrls": [
-      "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436975/hx9ravtjop3uqv4giupt.jpg",
-      "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436294/mvhb3iazpiar6duvy9we.jpg",
-      "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436496/ihozxprafjzuhil9qhh4.jpg",
-      "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436952/aef9ajipinpjhkley1e3.jpg",
-      "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436948/vgfxpvmcpd2q40qxtuv3.jpg"
-    ],
-    "price": 595,
-    "summary": "BLABLABLA:) - READ \"Tcessible / ADA, call resort directly to ensure U receive. If U need ADA U MUST inform us BEFORE booking.",
-    "capacity": 8,
-    "amenities": [
-      "TV",
-      "Cable TV",
-      "Internet",
-      "Wifi",
-      "Air conditioning",
-      "Wheelchair accessible",
-      "Pool",
-      "Kitchen",
-      "Free parking on premises",
-      "Doorman",
-      "Gym",
-      "Elevator",
-      "Hot tub",
-      "Heating",
-      "Iron",
-      "Waterfront",
-      "Beachfront"
-    ],
-    "bathrooms": 2,
-    "bedrooms": 2,
-    "roomType": "Entire home/apt",
-    "loc": {
-      "country": "United States",
-      "countryCode": "US",
-      "city": "Maui",
-      "address": "Lahaina, HI, United States",
-      "lng": -156.6917,
-      "lat": 20.93792
-    },
-    "beds": 3,
-    "propertyType": "home",
-    "labels": [
-      "Amazing views",
-      "Off-the-grid",
-      "OMG!",
-      "Lakes"
-    ],
-    "_id": "0CHUt"
+    "labels": ["Historical homes", "Amazing views", "Tropical"]
   }
 ]

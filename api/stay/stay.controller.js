@@ -12,6 +12,8 @@ export async function getStays(req, res) {
         }
         console.log('filterBy', filterBy)
         const stays = await stayService.query(filterBy)
+        // console.log(stays[0]);
+        
         res.send(stays)
     } catch (err) {
         res.status(400).send(`Couldn't get stays`)

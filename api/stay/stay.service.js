@@ -17,6 +17,7 @@ export const stayService = {
 // var stays = utilService.readJsonFile('./data/stay.json')
 const collectionName = 'stay'
 
+// working
 async function query(filterBy = {}) {
     try {
         const criteria = _buildCriteria(filterBy)
@@ -29,21 +30,23 @@ async function query(filterBy = {}) {
 
         const stays = stayCursor.toArray()
         console.log('stays:',stays); //PROMISE <pending> 
+
         return stays
     } catch (err) {
         loggerService.error(err)
         throw err
     }
 }
-
+// working
 async function getById(stayId) {
     try {
-        var stay = stays.find(stay => stay._id === stayId)
+        const collection = await dbService.getCollection(collectionName)
+        const stay = collection.findOne({ _id: stayId })
         if (!stay) throw `Couldn't find stay with _id ${stayId}`
         return stay
     } catch (err) {
-        loggerService.error('stayService[getById] : ' + err)
-        throw (err)
+        loggerService.error(`while finding stay ${stayId}`, err)
+        throw err
     }
 }
 
@@ -97,15 +100,44 @@ function _saveStaysToFile(path) {
     })
 }
 
+// working
 function _buildCriteria(filterBy) {
     const criteria = {}
-
-    if (filterBy.txt) {
-        criteria.type = { $regex: filterBy.type, $options: 'i' }
+    
+    if (filterBy.type) {
+        // criteria.type = { $regex: filterBy.type, $options: 'i' }
+        criteria.type = { $eq: filterBy.type}
     }
 
-    if (filterBy.minSpeed) {
+    if (filterBy.price) {
         criteria.price = { $lt: filterBy.price }
     }
+    console.log('preCrateria',criteria );
     return criteria
 }
+
+
+// async function updateIdsToObjectId(collection) {
+//     try {
+//         const documents = await collection.find().toArray();
+
+//         // Map documents to update operation promises
+//         const updateOperations = documents.map((document) => {
+//             const updatedId = new ObjectId(document._id);
+//             return {
+//                 updateOne: {
+//                     filter: { _id: document._id },
+//                     update: { $set: { _id: updatedId } },
+//                 },
+//             };
+//         });
+
+//         // Execute updateMany with all update operations
+//         const result = await collection.bulkWrite(updateOperations);
+
+//         console.log(`${result.modifiedCount} documents updated successfully.`);
+//     } catch (err) {
+//         console.error('Error updating _id values:', err);
+//         throw err;
+//     }
+// }
