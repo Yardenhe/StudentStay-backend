@@ -62,3 +62,12 @@ function makeId(length = 5) {
     }
     return text
 }
+
+
+// function _changeMockDataToJsonFile(data,path){
+//     const jsonData = JSON.stringify(data)
+//     fs.writeFile(path,jsonData,(err)=>{
+//         loggerService.error(err)
+//     })
+//     return 
+// }

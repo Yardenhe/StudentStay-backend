@@ -27,23 +27,6 @@ app.use('/api/stay', stayRoutes)
 app.use('/api/user', userRoutes)
 app.use('/api/auth', authRoutes)
 
-// Some example routes
-
-app.get('/', (req, res) => {
-    res.send(`<h1>Hi Express</h1>`)
-})
-
-app.get('/puki', (req, res) => {
-    let stayCount = +req.cookies.stayCount
-    console.log(stayCount);
-    res.cookie('stayCount', stayCount + 1 || 1)
-    res.send(`<h1>Hi Puki</h1>`)
-})
-
-app.get('/nono', (req, res) => {
-    res.redirect('/puki')
-})
-
 // fallback route
 app.get('/**', (req, res) => {
     res.sendFile(path.resolve('public/index.html'))

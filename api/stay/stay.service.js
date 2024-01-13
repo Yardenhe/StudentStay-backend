@@ -3,6 +3,9 @@ import fs from 'fs'
 import { loggerService } from '../../services/logger.service.js'
 import { utilService } from '../../services/util.service.js';
 import { throws } from 'assert';
+import { dbService } from '../../services/db.service.js';
+import { ObjectId } from 'mongodb';
+
 
 export const stayService = {
     query,
@@ -11,30 +14,22 @@ export const stayService = {
     save
 }
 
-var stays = utilService.readJsonFile('./data/stay.json')
-const PAGE_SIZE = 4
-
-
-
+// var stays = utilService.readJsonFile('./data/stay.json')
+const collectionName = 'stay'
 
 async function query(filterBy = {}) {
     try {
-        let staysToReturn = [...stays]
-        if (filterBy.txt) {
-            const regExp = new RegExp(filterBy.txt, 'i')
-            staysToReturn = staysToReturn.filter(stay => regExp.test(stay.vendor))
-        }
+        const criteria = _buildCriteria(filterBy)
+        console.log('criteria',criteria);
+        
+        const collection = await dbService.getCollection(collectionName)
 
-        if (filterBy.minSpeed) {
-            staysToReturn = staysToReturn.filter(stay => stay.speed >= filterBy.minSpeed)
-        }
+        const stayCursor = await collection.find(criteria)
+        // console.log('cursor:',stayCursor);
 
-        if (filterBy.pageIdx !== undefined) {
-            const startIdx = filterBy.pageIdx * PAGE_SIZE
-            staysToReturn = staysToReturn.slice(startIdx, startIdx + PAGE_SIZE)
-        }
-
-        return staysToReturn
+        const stays = stayCursor.toArray()
+        console.log('stays:',stays); //PROMISE <pending> 
+        return stays
     } catch (err) {
         loggerService.error(err)
         throw err
@@ -58,7 +53,7 @@ async function remove(stayId, loggedinUser) {
         if (idx === -1) throw `Couldn't find stay with _id ${stayId}`
 
         const stay = stays[idx]
-        if (!loggedinUser.isAdmin && stay.owner._id !== loggedinUser._id) throw `Not your stay!`
+        // if (!loggedinUser.isAdmin && stay.owner._id !== loggedinUser._id) throw `Not your stay!`
 
         stays.splice(idx, 1)
         await _saveStaysToFile('./data/stay.json')
@@ -75,13 +70,13 @@ async function save(stayToSave, loggedinUser) {
             if (idx === -1) throw `Couldn't find stay with _id ${stayToSave._id}`
 
             const stay = stays[idx]
-            if (!loggedinUser.isAdmin && stayToSave.owner._id !== loggedinUser._id) throw `Not your stay!`
+            //if (!loggedinUser.isAdmin && stayToSave.owner._id !== loggedinUser._id) throw `Not your stay!`
+
 
             stays.splice(idx, 1, {...stay, ...stayToSave })
         } else {
             stayToSave._id = utilService.makeId()
-            stayToSave.createdAt = Date.now()
-            stayToSave.owner = loggedinUser
+            stayToSave.host = loggedinUser
             stays.push(stayToSave)
         }
         await _saveStaysToFile('./data/stay.json')
@@ -100,4 +95,17 @@ function _saveStaysToFile(path) {
             resolve()
         })
     })
+}
+
+function _buildCriteria(filterBy) {
+    const criteria = {}
+
+    if (filterBy.txt) {
+        criteria.type = { $regex: filterBy.type, $options: 'i' }
+    }
+
+    if (filterBy.minSpeed) {
+        criteria.price = { $lt: filterBy.price }
+    }
+    return criteria
 }

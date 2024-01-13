@@ -8,9 +8,11 @@ const router = express.Router()
 
 router.get('/', log, getStays)
 router.get('/:stayId', getStay)
-router.delete('/:stayId', log, requireAuth, removeStay)
-router.post('/', requireAuth, addStay)
-router.put('/', requireAuth, updateStay)
+router.delete('/:stayId',removeStay)// log, requireAuth, removeStay)
+router.post('/', addStay)//requireAuth, addStay)
+router.put('/', updateStay)//requireAuth, updateStay)
+
+// add reviews / delete reviews
 
 
 
