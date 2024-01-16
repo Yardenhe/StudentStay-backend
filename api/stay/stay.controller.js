@@ -35,19 +35,19 @@ export async function getStay(req, res) {
 }
 
 
-// // Delete
+// Delete
 export async function removeStay(req, res) {
     const { stayId } = req.params
     try {
-        await stayService.remove(stayId, req.loggedinUser)
-        res.send('Deleted OK')
+        const deletedCount = await stayService.remove(stayId, req.loggedinUser)
+        res.send(`Deleted ${deletedCount} items`)
     } catch (err) {
         res.status(400).send(`Couldn't remove stay : ${err}`)
     }
 }
 
 
-// // Save
+// ADD
 export async function addStay(req, res) {
     console.log('trying to add stay');
     const {
@@ -61,7 +61,6 @@ export async function addStay(req, res) {
         bathrooms,
         bedrooms,
         roomType,
-        host,
         loc,
         beds,
         propertyType,
@@ -70,26 +69,26 @@ export async function addStay(req, res) {
     // Better use createStay()
     const stayToSave = { 
         name,
+        price,
         type,
         imgUrls,
-        price,
         summary,
         capacity,
         amenities,
         bathrooms,
         bedrooms,
         roomType,
-        host,
         loc,
         beds,
         propertyType,
-        labels }
+        labels 
+    }
 
         console.log(stayToSave);
 
     // if (!host){
         try {
-            const savedStay = await stayService.save(stayToSave, req.loggedinUser)
+            const savedStay = await stayService.add(stayToSave, req.loggedinUser)
             res.send(savedStay)
         } catch (err) {
             res.status(400).send(`Couldn't save stay`)
@@ -97,6 +96,7 @@ export async function addStay(req, res) {
     // }
 }
 
+// UPDATE
 export async function updateStay(req, res) {
     console.log(req.body);
 
@@ -122,21 +122,21 @@ export async function updateStay(req, res) {
         name,
         type,
         imgUrls,
-        price,
+        price:+price,
         summary,
         capacity,
         amenities,
-        bathrooms,
-        bedrooms,
+        bathrooms:+bathrooms,
+        bedrooms:+bedrooms,
         roomType,
         host,
         loc,
-        beds,
+        beds:+beds,
         propertyType,
         labels }
-        console.log(stayToSave);
+        // console.log(stayToSave);
     try {
-        const savedStay = await stayService.save(stayToSave, req.loggedinUser)
+        const savedStay = await stayService.update(stayToSave, req.loggedinUser)
         res.send(savedStay)
     } catch (err) {
         res.status(400).send(`Couldn't save stay`)

@@ -11,13 +11,14 @@ export const stayService = {
     query,
     getById,
     remove,
-    save
+    add,
+    update,
 }
 
 // var stays = utilService.readJsonFile('./data/stay.json')
 const collectionName = 'stay'
 
-// working
+// READ
 async function query(filterBy = {}) {
     try {
         const criteria = _buildCriteria(filterBy)
@@ -28,8 +29,8 @@ async function query(filterBy = {}) {
         const stayCursor = await collection.find(criteria)
         // console.log('cursor:',stayCursor);
 
-        const stays = stayCursor.toArray()
-        console.log('stays:',stays); //PROMISE <pending> 
+        const stays = await stayCursor.toArray()
+        // console.log('stays:',stays);
 
         return stays
     } catch (err) {
@@ -37,11 +38,11 @@ async function query(filterBy = {}) {
         throw err
     }
 }
-// working
+// GETBYID
 async function getById(stayId) {
     try {
         const collection = await dbService.getCollection(collectionName)
-        const stay = collection.findOne({ _id: stayId })
+        const stay = await collection.findOne({ _id: new ObjectId(stayId) })
         if (!stay) throw `Couldn't find stay with _id ${stayId}`
         return stay
     } catch (err) {
@@ -49,47 +50,55 @@ async function getById(stayId) {
         throw err
     }
 }
-
+// DELETE
 async function remove(stayId, loggedinUser) {
     try {
-        const idx = stays.findIndex(stay => stay._id === stayId)
-        if (idx === -1) throw `Couldn't find stay with _id ${stayId}`
-
-        const stay = stays[idx]
+        const collection = await dbService.getCollection(collectionName)
+        const { deletedCount } = await collection.deleteOne({ _id: new ObjectId(stayId) })
+        if (deletedCount===0){
+            throw `couldn't Delete item with id ${stayId}`
+        }
+        // TODO: make loggedIn logic
         // if (!loggedinUser.isAdmin && stay.owner._id !== loggedinUser._id) throw `Not your stay!`
-
-        stays.splice(idx, 1)
-        await _saveStaysToFile('./data/stay.json')
+        return deletedCount
     } catch (err) {
         loggerService.error('stayService[remove] : ', err)
         throw err
     }
 }
-
-async function save(stayToSave, loggedinUser) {
+// CREATE
+async function add(StayToSave, loggedinUser) {
     try {
-        if (stayToSave._id) {
-            const idx = stays.findIndex(stay => stay._id === stayToSave._id)
-            if (idx === -1) throw `Couldn't find stay with _id ${stayToSave._id}`
-
-            const stay = stays[idx]
-            //if (!loggedinUser.isAdmin && stayToSave.owner._id !== loggedinUser._id) throw `Not your stay!`
-
-
-            stays.splice(idx, 1, {...stay, ...stayToSave })
-        } else {
-            stayToSave._id = utilService.makeId()
-            stayToSave.host = loggedinUser
-            stays.push(stayToSave)
-        }
-        await _saveStaysToFile('./data/stay.json')
-        return stayToSave
+        StayToSave.host = loggedinUser || 'dev user'
+        const collection = await dbService.getCollection(collectionName)
+        await collection.insertOne(StayToSave)
+        return StayToSave
     } catch (err) {
-        loggerService.error('stayService[save] : ' + err)
+        loggerService.error('carService, can not add car : ' + err)
         throw err
     }
 }
+// UPDATE
+async function update(stay,loggedinUser = '') {
+    try {
+        // Peek only updateable fields
+        const stayToSave = {
+            name: stay.name,
+            price: stay.price,
+            type: stay.type,
+        }
+        const collection = await dbService.getCollection(collectionName)
+        await collection.updateOne({ _id: new ObjectId(stay._id) }, { $set: stayToSave })
 
+        // console.log(stay);
+
+        return `Updated Stay successfully`
+    } catch (err) {
+        loggerService.error(`cannot update stay ${stay._id}`, err)
+        throw err
+    }
+}
+// 
 function _saveStaysToFile(path) {
     return new Promise((resolve, reject) => {
         const data = JSON.stringify(stays, null, 2)
@@ -100,13 +109,13 @@ function _saveStaysToFile(path) {
     })
 }
 
-// working
+
+// 
 function _buildCriteria(filterBy) {
     const criteria = {}
     
     if (filterBy.type) {
-        // criteria.type = { $regex: filterBy.type, $options: 'i' }
-        criteria.type = { $eq: filterBy.type}
+        criteria.type = { $regex: filterBy.type, $options: 'i' }
     }
 
     if (filterBy.price) {
