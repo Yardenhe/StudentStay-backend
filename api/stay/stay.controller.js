@@ -5,15 +5,15 @@ import { stayService } from './stay.service.js';
 // List
 export async function getStays(req, res) {
     try {
-        
-        console.log('req.cookies', req.cookies)
+        console.log('getStays req.cookies', req.cookies)
+        console.log('getStays req.query',req.query);
         const filterBy = {
             minPrice: +req.query.minPrice || null,
             maxPrice: +req.query.maxPrice || null,
             type: req.query.type || '',
         }
-       
-        console.log('filterBy', filterBy)
+
+        console.log('getStays filterBy', filterBy)
         const stays = await stayService.query(filterBy)
         // console.log(stays[0]);
         
