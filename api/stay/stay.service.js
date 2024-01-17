@@ -112,16 +112,19 @@ function _saveStaysToFile(path) {
 
 // 
 function _buildCriteria(filterBy) {
+    console.log('got criteria Filter',filterBy);
     const criteria = {}
     
     if (filterBy.type) {
         criteria.type = { $regex: filterBy.type, $options: 'i' }
     }
 
-    if (filterBy.price) {
-        criteria.price = { $lt: filterBy.price }
+    if (filterBy.minPrice || filterBy.maxPrice) {
+        criteria.price = { $gt: filterBy.minPrice,$lt: filterBy.maxPrice }
     }
+
     console.log('preCrateria',criteria );
+
     return criteria
 }
 
