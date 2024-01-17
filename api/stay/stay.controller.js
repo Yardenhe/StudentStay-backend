@@ -5,11 +5,14 @@ import { stayService } from './stay.service.js';
 // List
 export async function getStays(req, res) {
     try {
+        
         console.log('req.cookies', req.cookies)
         const filterBy = {
-            price: +req.query.price || null,
+            minPrice: +req.query.minPrice || null,
+            maxPrice: +req.query.maxPrice || null,
             type: req.query.type || '',
         }
+       
         console.log('filterBy', filterBy)
         const stays = await stayService.query(filterBy)
         // console.log(stays[0]);
