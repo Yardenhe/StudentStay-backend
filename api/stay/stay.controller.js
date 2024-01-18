@@ -5,26 +5,51 @@ import { stayService } from './stay.service.js';
 // List
 export async function getStays(req, res) {
     try {
-        console.log('getStays req.cookies', req.cookies)
-        console.log('getStays req.query',req.query);
+        // console.log('getStays req.cookies', req.cookies)
+        // console.log('getStays req.query',req.query);
         const filterBy = {
             minPrice: +req.query.minPrice || null,
             maxPrice: +req.query.maxPrice || null,
-            beds:+req.query.beds || null,
-            bedrooms:+req.query.bedrooms || null,
-            bathrooms:+req.query.bathrooms || null,
-            propertyType:req.query.propertyType || '',
-            amenities:req.query.amenities || '',
-            country:req.query.country || '',
+            beds: +req.query.beds || null,
+            bedrooms: +req.query.bedrooms || null,
+            bathrooms: +req.query.bathrooms || null,
+            propertyType: req.query.propertyType || '',
+            amenities: req.query.amenities || '',
+            country: req.query.country || '',
             type: req.query.type || '',
         }
-        
 
-        console.log('getStays filterBy', filterBy)
+
+        // console.log('getStays filterBy', filterBy)
         const stays = await stayService.query(filterBy)
         // console.log(stays[0]);
-        
+
         res.send(stays)
+    } catch (err) {
+        res.status(400).send(`Couldn't get stays`)
+    }
+}
+export async function getStaysCount(req, res) {
+    try {
+        console.log('getStaysCount req.query', req.query);
+        const filterBy = {
+            minPrice: +req.query.minPrice || null,
+            maxPrice: +req.query.maxPrice || null,
+            beds: +req.query.beds || null,
+            bedrooms: +req.query.bedrooms || null,
+            bathrooms: +req.query.bathrooms || null,
+            propertyType: req.query.propertyType || '',
+            amenities: req.query.amenities || '',
+            country: req.query.country || '',
+            type: req.query.type || '',
+        }
+
+
+
+        const count = await stayService.count(filterBy)
+
+
+        res.send({ count })
     } catch (err) {
         res.status(400).send(`Couldn't get stays`)
     }
@@ -74,10 +99,10 @@ export async function addStay(req, res) {
         loc,
         beds,
         propertyType,
-        labels} = req.body
+        labels } = req.body
 
     // Better use createStay()
-    const stayToSave = { 
+    const stayToSave = {
         name,
         price,
         type,
@@ -91,18 +116,18 @@ export async function addStay(req, res) {
         loc,
         beds,
         propertyType,
-        labels 
+        labels
     }
 
-        console.log(stayToSave);
+    console.log(stayToSave);
 
     // if (!host){
-        try {
-            const savedStay = await stayService.add(stayToSave, req.loggedinUser)
-            res.send(savedStay)
-        } catch (err) {
-            res.status(400).send(`Couldn't save stay`)
-        }
+    try {
+        const savedStay = await stayService.add(stayToSave, req.loggedinUser)
+        res.send(savedStay)
+    } catch (err) {
+        res.status(400).send(`Couldn't save stay`)
+    }
     // }
 }
 
@@ -111,7 +136,7 @@ export async function updateStay(req, res) {
     console.log(req.body);
 
     const {
-         _id,
+        _id,
         name,
         type,
         imgUrls,
@@ -132,19 +157,20 @@ export async function updateStay(req, res) {
         name,
         type,
         imgUrls,
-        price:+price,
+        price: +price,
         summary,
         capacity,
         amenities,
-        bathrooms:+bathrooms,
-        bedrooms:+bedrooms,
+        bathrooms: +bathrooms,
+        bedrooms: +bedrooms,
         roomType,
         host,
         loc,
-        beds:+beds,
+        beds: +beds,
         propertyType,
-        labels }
-        // console.log(stayToSave);
+        labels
+    }
+    // console.log(stayToSave);
     try {
         const savedStay = await stayService.update(stayToSave, req.loggedinUser)
         res.send(savedStay)

@@ -13,6 +13,7 @@ export const stayService = {
     remove,
     add,
     update,
+    count
 }
 
 // var stays = utilService.readJsonFile('./data/stay.json')
@@ -22,8 +23,8 @@ const collectionName = 'stay'
 async function query(filterBy = {}) {
     try {
         const criteria = _buildCriteria(filterBy)
-        console.log('criteria',criteria);
-        
+        console.log('criteria', criteria);
+
         const collection = await dbService.getCollection(collectionName)
 
         const stayCursor = await collection.find(criteria)
@@ -33,6 +34,25 @@ async function query(filterBy = {}) {
         // console.log('stays:',stays);
 
         return stays
+    } catch (err) {
+        loggerService.error(err)
+        throw err
+    }
+}
+async function count(filterBy = {}) {
+    try {
+        const criteria = _buildCriteria(filterBy)
+        console.log('criteria', criteria);
+
+        const collection = await dbService.getCollection(collectionName)
+
+        const stayCount = await collection.countDocuments(criteria)
+        console.log('stayCount:', stayCount);
+
+        //const stays = await stayCursor.toArray()
+        // console.log('stays:',stays);
+
+        return stayCount
     } catch (err) {
         loggerService.error(err)
         throw err
@@ -55,7 +75,7 @@ async function remove(stayId, loggedinUser) {
     try {
         const collection = await dbService.getCollection(collectionName)
         const { deletedCount } = await collection.deleteOne({ _id: new ObjectId(stayId) })
-        if (deletedCount===0){
+        if (deletedCount === 0) {
             throw `couldn't Delete item with id ${stayId}`
         }
         // TODO: make loggedIn logic
@@ -79,7 +99,7 @@ async function add(StayToSave, loggedinUser) {
     }
 }
 // UPDATE
-async function update(stay,loggedinUser = '') {
+async function update(stay, loggedinUser = '') {
     try {
         // Peek only updateable fields
         const stayToSave = {
@@ -112,37 +132,37 @@ function _saveStaysToFile(path) {
 
 // 
 function _buildCriteria(filterBy) {
-    console.log('got criteria Filter',filterBy);
+    console.log('got criteria Filter', filterBy);
     const criteria = {}
-    
+
     if (filterBy.type) {
         criteria.type = { $regex: filterBy.type, $options: 'i' }
     }
 
     if (filterBy.minPrice || filterBy.maxPrice) {
-        criteria.price = { $gt: filterBy.minPrice,$lt: filterBy.maxPrice }
+        criteria.price = { $gt: filterBy.minPrice, $lt: filterBy.maxPrice }
     }
-    if(filterBy.beds)
-        criteria.beds=filterBy.beds
+    if (filterBy.beds)
+        criteria.beds = filterBy.beds
 
-    if(filterBy.bedrooms)
-        criteria.bedrooms=filterBy.bedrooms
+    if (filterBy.bedrooms)
+        criteria.bedrooms = filterBy.bedrooms
 
-    if(filterBy.bathrooms)
-        criteria.bathrooms=filterBy.bathrooms
+    if (filterBy.bathrooms)
+        criteria.bathrooms = filterBy.bathrooms
 
     if (filterBy.propertyType && filterBy.propertyType.length > 0) {
-    criteria.propertyType = { $in: filterBy.propertyType }
+        criteria.propertyType = { $in: filterBy.propertyType }
     }
     if (filterBy.amenities && filterBy.amenities.length > 0) {
-    criteria.amenities = {   $in: filterBy.amenities.map(type => new RegExp(type, 'i'))}
+        criteria.amenities = { $in: filterBy.amenities.map(type => new RegExp(type, 'i')) }
     }
     if (filterBy.country) {
-        criteria.loc.country = { $regex: filterBy.loc.country, $options: 'i' };
+        criteria['loc.country'] = { $regex: filterBy.country, $options: 'i' };
     }
-    
 
-    console.log('preCrateria',criteria );
+
+    console.log('preCrateria', criteria);
 
     return criteria
 }
