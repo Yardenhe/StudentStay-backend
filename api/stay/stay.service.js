@@ -122,6 +122,25 @@ function _buildCriteria(filterBy) {
     if (filterBy.minPrice || filterBy.maxPrice) {
         criteria.price = { $gt: filterBy.minPrice,$lt: filterBy.maxPrice }
     }
+    if(filterBy.beds)
+        criteria.beds=filterBy.beds
+
+    if(filterBy.bedrooms)
+        criteria.bedrooms=filterBy.bedrooms
+
+    if(filterBy.bathrooms)
+        criteria.bathrooms=filterBy.bathrooms
+
+    if (filterBy.propertyType && filterBy.propertyType.length > 0) {
+    criteria.propertyType = { $in: filterBy.propertyType }
+    }
+    if (filterBy.amenities && filterBy.amenities.length > 0) {
+    criteria.amenities = {   $in: filterBy.amenities.map(type => new RegExp(type, 'i'))}
+    }
+    if (filterBy.country) {
+        criteria.loc.country = { $regex: filterBy.loc.country, $options: 'i' };
+    }
+    
 
     console.log('preCrateria',criteria );
 

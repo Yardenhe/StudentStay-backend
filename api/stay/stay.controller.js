@@ -10,8 +10,15 @@ export async function getStays(req, res) {
         const filterBy = {
             minPrice: +req.query.minPrice || null,
             maxPrice: +req.query.maxPrice || null,
+            beds:+req.query.beds || null,
+            bedrooms:+req.query.bedrooms || null,
+            bathrooms:+req.query.bathrooms || null,
+            propertyType:req.query.propertyType || '',
+            amenities:req.query.amenities || '',
+            country:req.query.country || '',
             type: req.query.type || '',
         }
+        
 
         console.log('getStays filterBy', filterBy)
         const stays = await stayService.query(filterBy)
