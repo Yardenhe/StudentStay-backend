@@ -69,7 +69,7 @@ async function remove(stayId, loggedinUser) {
 // CREATE
 async function add(StayToSave, loggedinUser) {
     try {
-        StayToSave.host = loggedinUser || 'dev user'
+        StayToSave.host = loggedinUser || 'host host'
         const collection = await dbService.getCollection(collectionName)
         await collection.insertOne(StayToSave)
         return StayToSave

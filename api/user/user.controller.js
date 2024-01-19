@@ -2,8 +2,9 @@ import { userService } from './user.service.js'
 import { loggerService } from '../../services/logger.service.js'
 
 export async function getUser(req, res) {
+    const {userId} = req.params
     try {
-        const user = await userService.getById(req.params.id)
+        const user = await userService.getById(userId)
         res.send(user)
     } catch (err) {
         loggerService.error('Failed to get user', err)
@@ -25,9 +26,24 @@ export async function getUsers(req, res) {
     }
 }
 
-export async function deleteUser(req, res) {
+export async function addUser(req, res) {
+    const {username,fullname,password} = req.body
+
+    const userToSave = {username,fullname,password}
+
     try {
-        await userService.remove(req.params.id)
+        const savedUser = await userService.add(userToSave)
+        res.send(savedUser)
+    } catch (err) {
+        res.status(400).send(`Couldn't save User`)
+        
+    }
+}
+
+export async function deleteUser(req, res) {
+    const {userId} = req.params
+    try {
+        await userService.remove(userId)
         res.send({ msg: 'Deleted successfully' })
     } catch (err) {
         loggerService.error('Failed to delete user', err)
@@ -37,8 +53,10 @@ export async function deleteUser(req, res) {
 
 export async function updateUser(req, res) {
     try {
-        const user = req.body
-        const savedUser = await userService.update(user)
+        const {_id,username,fullname,password} = req.body
+        const userToSave = {_id,username,fullname,password}
+
+        const savedUser = await userService.update(userToSave)
         res.send(savedUser)
     } catch (err) {
         loggerService.error('Failed to update user', err)
