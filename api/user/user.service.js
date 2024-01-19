@@ -1,57 +1,138 @@
-import fs from 'fs'
-import { utilService } from '../../services/util.service.js'
+import { dbService } from '../../services/db.service.js'
+import { loggerService } from '../../services/logger.service.js'
+// import { reviewService } from '../review/review.service.js'
+import mongodb from 'mongodb'
+const { ObjectId } = mongodb
 
-
-const users = utilService.readJsonFile('data/user.json')
+const collectionName = 'user'
 
 export const userService = {
     query,
     getById,
+    // getByUsername,
     remove,
-    save,
-    getByUsername
+    update,
+    add
 }
 
 
-
-async function query() {
-    return users
+async function query(filterBy = {}) {
+    const criteria = _buildCriteria(filterBy)
+    try {
+        const collection = await dbService.getCollection(collectionName)
+        var users = await collection.find(criteria).toArray()
+        users = users.map(user => {
+            delete user.password
+            // user.createdAt = new ObjectId(user._id).getTimestamp()
+            return user
+        })
+        return users
+    } catch (err) {
+        loggerService.error('cannot find users', err)
+        throw err
+    }
 }
 
 async function getById(userId) {
-    const user = users.find(user => user._id === userId)
-    if (!user) throw 'User not found!'
-    return user
+    try {
+        const collection = await dbService.getCollection(collectionName)
+        const user = await collection.findOne({ _id: new ObjectId(userId) })
+        delete user.password
+
+        // if (user.stays) {
+        //     user.givenReviews = await reviewService.query({ byUserId: new ObjectId(user._id) })
+        // }
+        // user.givenReviews = user.givenReviews.map(review => {
+        //     delete review.byUser
+        //     return review
+        // })
+
+        return user
+    } catch (err) {
+        loggerService.error(`while finding user by id: ${userId}`, err)
+        throw err
+    }
 }
 
-async function getByUsername(username) {
-    return users.find(user => user.username === username)
+async function add(userToSave) {
+    try {
+        const collection = await dbService.getCollection(collectionName)
+        await collection.insertOne(userToSave)
+        // userToReturn = delete userToSave.password
+        return userToSave
+    } catch (err) {
+        loggerService.error('userServicve, Couldnt add User : ' + err)
+        throw err
+    }
 }
 
 async function remove(userId) {
-    users = users.filter(user => user._id !== userId)
-    return await _saveUsersToFile()
+    try {
+        const collection = await dbService.getCollection(collectionName)
+        await collection.deleteOne({ _id: new ObjectId(userId) })
+    } catch (err) {
+        loggerService.error(`cannot remove user ${userId}`, err)
+        throw err
+    }
 }
 
-async function save(user) {
-    user._id = utilService.makeId()
-    user.score = 10000
-    if (!user.imgUrl) user.imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
-        // TODO: severe security issue- attacker can post admins
-    users.push(user)
-    await _saveUsersToFile()
-    return user
+async function update(userToSave) {
+    // const {_id} = userToSave
+    // delete userToSave._id
+    const userFieldsToUpdate = _includeFieldsToUpdate(userToSave)
+    try {
+
+        const collection = await dbService.getCollection(collectionName)
+        await collection.updateOne({ _id: new ObjectId(userToSave._id) }, { $set: userFieldsToUpdate })
+        return userToSave
+    } catch (err) {
+        loggerService.error(`cannot update user ${userToSave._id}`, err)
+        throw err
+    }
 }
 
-function _saveUsersToFile() {
-    return new Promise((resolve, reject) => {
 
-        const usersStr = JSON.stringify(users, null, 2)
-        fs.writeFile('data/user.json', usersStr, (err) => {
-            if (err) {
-                return console.log(err);
-            }
-            resolve()
-        })
-    })
+// async function getByUsername(username) {
+//     try {
+//         const collection = await dbService.getCollection(collectionName)
+//         const user = await collection.findOne({ username })
+//         return user
+//     } catch (err) {
+//         loggerService.error(`while finding user by username: ${username}`, err)
+//         throw err
+//     }
+// }
+
+function _buildCriteria(filterBy) {
+    const criteria = {}
+    if (filterBy.username) {
+        criteria.username = { $regex: filterBy.username, $options: 'i' }
+    }
+    return criteria
 }
+
+function _includeFieldsToUpdate(user){
+    const userFieldsToUpdate = {}
+    if (user.fullname){
+        userFieldsToUpdate.fullname = user.fullname
+    }
+    if (user.username){
+        userFieldsToUpdate.username = user.username
+    }
+
+    return userFieldsToUpdate
+}
+
+// GENERIC FUNCTION
+// function _includeFieldsToUpdate(dataObject) {
+//     // MUST NOT INCLUDE _id
+//     const fieldsToUpdate = {}
+//     Object.keys(dataObject).forEach((field) => {
+//         if (dataObject[field]) {
+//             fieldsToUpdate[field] = dataObject[field]
+//         }
+//     })
+//     console.log("🚀 ~ _includeFieldsToUpdate ~ fieldsToUpdate:", fieldsToUpdate)
+
+//     return fieldsToUpdate
+// }
