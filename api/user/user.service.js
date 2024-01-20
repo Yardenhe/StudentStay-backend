@@ -10,9 +10,10 @@ export const userService = {
     query,
     getById,
     // getByUsername,
+    getByEmail,
     remove,
     update,
-    add
+    save
 }
 
 
@@ -54,7 +55,7 @@ async function getById(userId) {
     }
 }
 
-async function add(userToSave) {
+async function save(userToSave) {
     try {
         const collection = await dbService.getCollection(collectionName)
         await collection.insertOne(userToSave)
@@ -92,16 +93,16 @@ async function update(userToSave) {
 }
 
 
-// async function getByUsername(username) {
-//     try {
-//         const collection = await dbService.getCollection(collectionName)
-//         const user = await collection.findOne({ username })
-//         return user
-//     } catch (err) {
-//         loggerService.error(`while finding user by username: ${username}`, err)
-//         throw err
-//     }
-// }
+async function getByEmail(email) {
+    try {
+        const collection = await dbService.getCollection(collectionName)
+        const user = await collection.findOne({ email })
+        return user
+    } catch (err) {
+        loggerService.error(`while finding user by username: ${email}`, err)
+        throw err
+    }
+}
 
 function _buildCriteria(filterBy) {
     const criteria = {}

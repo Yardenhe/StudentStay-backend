@@ -27,9 +27,9 @@ export async function getUsers(req, res) {
 }
 
 export async function addUser(req, res) {
-    const {username,fullname,password} = req.body
+    const {email,fullname,password} = req.body
 
-    const userToSave = {username,fullname,password}
+    const userToSave = {email,fullname,password}
 
     try {
         const savedUser = await userService.add(userToSave)
@@ -53,8 +53,8 @@ export async function deleteUser(req, res) {
 
 export async function updateUser(req, res) {
     try {
-        const {_id,username,fullname,password} = req.body
-        const userToSave = {_id,username,fullname,password}
+        const {_id,email,fullname,password} = req.body
+        const userToSave = {_id,email,fullname,password}
 
         const savedUser = await userService.update(userToSave)
         res.send(savedUser)
