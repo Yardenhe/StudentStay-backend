@@ -20,9 +20,9 @@ export const orderService = {
 const collectionName = 'order'
 
 // READ
-async function query(filterBy = {}) {
+async function query(user) {
     try {
-        const criteria = _buildCriteria(filterBy)
+        const criteria = _buildCriteria(user)
         console.log('criteria', criteria);
 
         const collection = await dbService.getCollection(collectionName)
@@ -135,16 +135,17 @@ function _saveordersToFile(path) {
 
 
 // 
-function _buildCriteria(filterBy) {
-    console.log('got criteria Filter', filterBy);
+function _buildCriteria(user) {
+    console.log('got orders criteria', user);
     const criteria = {}
 
-    if (filterBy.type) {
-        criteria.type = { $regex: filterBy.type, $options: 'i' }
+    if (user.buyer) {
+    // if (!isHost) {
+        criteria['buyer._id'] =  new ObjectId(user.buyer) 
+    } else if (user.hostId){
+        criteria.hostId =  new ObjectId(user.hostId) 
     }
-
-
-
+    
     console.log('preCrateria', criteria);
 
     return criteria

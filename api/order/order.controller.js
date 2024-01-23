@@ -6,16 +6,15 @@ import { orderService } from './order.service.js';
 export async function getOrders(req, res) {
     try {
         // console.log('getOrders req.cookies', req.cookies)
-        // console.log('getOrders req.query',req.query);
-        const filterBy = {
-            minPrice: +req.query.minPrice || null,
-            maxPrice: +req.query.maxPrice || null,
-        }
 
-
-        // console.log('getOrders filterBy', filterBy)
-        const orders = await orderService.query(filterBy)
-        // console.log(orders[0]);
+        console.log("🚀 ~ getOrders ~ buyer:", req.query)
+        
+        const  buyer  = req.query || null
+        const  hostId  = req.query || null
+        
+        // console.log("🚀 ~ getOrders ~ hostId:", hostId)
+        const userTypeId = (buyer ? buyer : hostId) || {}
+        const orders = await orderService.query(userTypeId)
 
         res.send(orders)
     } catch (err) {
