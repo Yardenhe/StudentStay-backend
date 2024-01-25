@@ -86,7 +86,7 @@ async function remove(orderId, loggedinUser) {
 // CREATE
 async function add(orderToSave, loggedinUser) {
     try {
-        orderToSave.host = loggedinUser || 'dev user'
+        //orderToSave.hostId = loggedinUser._id || 'dev user'
         const collection = await dbService.getCollection(collectionName)
         await collection.insertOne(orderToSave)
         return orderToSave
@@ -94,6 +94,7 @@ async function add(orderToSave, loggedinUser) {
         loggerService.error('orderService, can not add order : ' + err)
         throw err
     }
+
 }
 // UPDATE
 async function update(order, loggedinUser = '') {
@@ -104,7 +105,6 @@ async function update(order, loggedinUser = '') {
             startDate: order.startDate,
             endDate: order.endDate,
             buyer: order.buyer,
-            hostId: order.hostId,
             totalPrice: order.totalPrice,
             guests: order.guests,
             stay: order.stay,
@@ -113,10 +113,10 @@ async function update(order, loggedinUser = '') {
         }
         const collection = await dbService.getCollection(collectionName)
         await collection.updateOne({ _id: new ObjectId(order._id) }, { $set: orderToSave })
+        const result = { ...orderToSave, _id: order._id }
+        return result
 
-        // console.log(order);
 
-        return `Updated order successfully`
     } catch (err) {
         loggerService.error(`cannot update order ${order._id}`, err)
         throw err
@@ -140,12 +140,12 @@ function _buildCriteria(user) {
     const criteria = {}
 
     if (user.buyer) {
-    // if (!isHost) {
-        criteria['buyer._id'] =  new ObjectId(user.buyer) 
-    } else if (user.hostId){
-        criteria.hostId =  new ObjectId(user.hostId) 
+        // if (!isHost) {
+        criteria['buyer._id'] = new ObjectId(user.buyer)
+    } else if (user.hostId) {
+        criteria.hostId = new ObjectId(user.hostId)
     }
-    
+
     console.log('preCrateria', criteria);
 
     return criteria

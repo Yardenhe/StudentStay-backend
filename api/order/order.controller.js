@@ -7,11 +7,11 @@ export async function getOrders(req, res) {
     try {
         // console.log('getOrders req.cookies', req.cookies)
 
-        console.log("🚀 ~ getOrders ~ buyer:", req.query)
-        
-        const  buyer  = req.query || null
-        const  hostId  = req.query || null
-        
+        // console.log("🚀 ~ getOrders ~ buyer:", req.query)
+
+        const buyer = req.query || null
+        const hostId = req.query || null
+
         // console.log("🚀 ~ getOrders ~ hostId:", hostId)
         const userTypeId = (buyer ? buyer : hostId) || {}
         const orders = await orderService.query(userTypeId)
@@ -119,6 +119,7 @@ export async function updateOrder(req, res) {
     // console.log(orderToSave);
     try {
         const savedOrder = await orderService.update(orderToSave, req.loggedinUser)
+        console.log("🚀 ~ updateOrder ~ savedOrder:", savedOrder)
         res.send(savedOrder)
     } catch (err) {
         res.status(400).send(`Couldn't save order`)
