@@ -1,4 +1,5 @@
 // Order CRUDL API
+import { ObjectId } from 'mongodb';
 import { authService } from '../auth/auth.service.js';
 import { orderService } from './order.service.js';
 
@@ -51,30 +52,33 @@ export async function removeOrder(req, res) {
 
 
 // ADD
+
 export async function addOrder(req, res) {
     const {
         startDate,
         endDate,
-        buyer,
+        // buyer ,
         hostId,
         guests,
         totalPrice,
         stay,
         msgs,
-        status,
+        // status,
     } = req.body
+    console.log("🚀 ~ addOrder ~ req.loggedinUser:", req.loggedinUser)
 
+    const {_id,fullname} = req.loggedinUser
     // Better use createOrder()
     const orderToSave = {
         startDate,
         endDate,
-        buyer,
+        buyer : {_id:new ObjectId(_id),fullname},
         hostId,
         totalPrice,
         guests,
         stay,
         msgs,
-        status,
+        status : "pending",
     }
 
     console.log(orderToSave);
