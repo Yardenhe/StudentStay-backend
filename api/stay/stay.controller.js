@@ -99,7 +99,10 @@ export async function addStay(req, res) {
         loc,
         beds,
         propertyType,
-        labels } = req.body
+        labels,
+        reviews,
+        likedByUsers
+    } = req.body
 
     // Better use createStay()
     const stayToSave = {
@@ -116,7 +119,9 @@ export async function addStay(req, res) {
         loc,
         beds,
         propertyType,
-        labels
+        labels,
+        reviews,
+        likedByUsers
     }
 
     console.log(stayToSave);

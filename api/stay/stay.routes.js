@@ -10,7 +10,7 @@ router.get('/', log, getStays)
 router.get('/count', getStaysCount)
 router.get('/:stayId', getStay)
 router.delete('/:stayId', removeStay)// log, requireAuth, removeStay)
-router.post('/', addStay)//requireAuth, addStay)
+router.post('/', requireAuth, addStay)
 router.put('/', updateStay)//requireAuth, updateStay)
 
 // add reviews / delete reviews
