@@ -2,6 +2,7 @@
 import { ObjectId } from 'mongodb';
 import { authService } from '../auth/auth.service.js';
 import { orderService } from './order.service.js';
+import { socketService } from '../../services/socket.service.js';
 
 // List
 export async function getOrders(req, res) {
@@ -67,18 +68,18 @@ export async function addOrder(req, res) {
     } = req.body
     console.log("🚀 ~ addOrder ~ req.loggedinUser:", req.loggedinUser)
 
-    const {_id,fullname} = req.loggedinUser
+    const { _id, fullname } = req.loggedinUser
     // Better use createOrder()
     const orderToSave = {
         startDate,
         endDate,
-        buyer : {_id:new ObjectId(_id),fullname},
+        buyer: { _id: new ObjectId(_id), fullname },
         hostId,
         totalPrice,
         guests,
         stay,
         msgs,
-        status : "pending",
+        status: "pending",
     }
 
     console.log(orderToSave);
@@ -112,7 +113,7 @@ export async function updateOrder(req, res) {
         _id,
         startDate,
         endDate,
-        buyer,
+        buyer: { _id: new ObjectId(buyer._id), fullname: buyer.fullname },
         hostId,
         totalPrice,
         guests,
@@ -123,6 +124,7 @@ export async function updateOrder(req, res) {
     // console.log(orderToSave);
     try {
         const savedOrder = await orderService.update(orderToSave, req.loggedinUser)
+        socketService.emitToUser({ type: 'order-updated', data: savedOrder, userId: orderToSave.buyer._id })
         console.log("🚀 ~ updateOrder ~ savedOrder:", savedOrder)
         res.send(savedOrder)
     } catch (err) {
