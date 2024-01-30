@@ -82,7 +82,7 @@ export async function addOrder(req, res) {
         status: "pending",
     }
 
-    console.log(orderToSave);
+    console.log('orderToSave', orderToSave);
 
     // if (!host){
     try {
