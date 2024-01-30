@@ -87,6 +87,8 @@ export async function addOrder(req, res) {
     // if (!host){
     try {
         const savedOrder = await orderService.add(orderToSave, req.loggedinUser)
+        socketService.emitToUser({ type: 'order-from-you', data: savedOrder, userId: orderToSave.hostId })
+        socketService.emitToUser({ type: 'order-added', data: savedOrder, userId: savedOrder.buyer._id })
         res.send(savedOrder)
     } catch (err) {
         res.status(400).send(`Couldn't save order`)

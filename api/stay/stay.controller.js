@@ -107,7 +107,7 @@ export async function addStay(req, res) {
     // Better use createStay()
     const stayToSave = {
         name,
-        price,
+        price: +price,
         type,
         imgUrls,
         summary,
