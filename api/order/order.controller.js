@@ -74,15 +74,15 @@ export async function addOrder(req, res) {
         startDate,
         endDate,
         buyer: { _id: new ObjectId(_id), fullname },
-        hostId,
-        totalPrice,
+        hostId:new ObjectId(hostId),
+        totalPrice:+totalPrice,
         guests,
         stay,
         msgs,
         status: "pending",
     }
 
-    console.log(orderToSave);
+    console.log('orderToSave' , orderToSave);
 
     // if (!host){
     try {
