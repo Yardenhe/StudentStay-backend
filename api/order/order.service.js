@@ -105,7 +105,7 @@ async function update(order, loggedinUser = '') {
             startDate: order.startDate,
             endDate: order.endDate,
             buyer: order.buyer,
-            totalPrice: order.totalPrice,
+            totalPrice: +order.totalPrice,
             guests: order.guests,
             stay: order.stay,
             msgs: order.msgs,
