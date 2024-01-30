@@ -85,11 +85,12 @@ async function remove(orderId, loggedinUser) {
 }
 // CREATE
 async function add(orderToSave, loggedinUser) {
+    console.log("🚀 ~ add ~ orderToSave:", orderToSave)
     try {
         //orderToSave.hostId = loggedinUser._id || 'dev user'
         const collection = await dbService.getCollection(collectionName)
-        await collection.insertOne(orderToSave)
-        return orderToSave
+        const { insertedId } = await collection.insertOne(orderToSave)
+        return await getById(insertedId)
     } catch (err) {
         loggerService.error('orderService, can not add order : ' + err)
         throw err
@@ -106,6 +107,7 @@ async function update(order, loggedinUser = '') {
             endDate: order.endDate,
             buyer: order.buyer,
             totalPrice: +order.totalPrice,
+            // hostId: hostId,
             guests: order.guests,
             stay: order.stay,
             msgs: order.msgs,
@@ -143,7 +145,7 @@ function _buildCriteria(user) {
         // if (!isHost) {
         criteria['buyer._id'] = new ObjectId(user.buyer)
     } else if (user.hostId) {
-        criteria.hostId = new ObjectId(user.hostId)
+        criteria.hostId = user.hostId//new ObjectId(user.hostId)
     }
 
     console.log('preCrateria', criteria);
