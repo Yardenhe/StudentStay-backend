@@ -127,6 +127,7 @@ export async function updateOrder(req, res) {
     try {
         const savedOrder = await orderService.update(orderToSave, req.loggedinUser)
         socketService.emitToUser({ type: 'order-updated', data: savedOrder, userId: orderToSave.buyer._id })
+        socketService.emitToUser({ type: 'order-status-change', data: savedOrder, userId: orderToSave.buyer._id })
         console.log("🚀 ~ updateOrder ~ savedOrder:", savedOrder)
         res.send(savedOrder)
     } catch (err) {
