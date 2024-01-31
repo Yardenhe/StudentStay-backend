@@ -1,0 +1,1 @@
+import{r as a,j as t}from"./index-ZhhXgfjK.js";const g=({className:s,src:e,alt:n})=>{const[r,m]=a.useState(e);return a.useEffect(()=>{m(e)},[e]),r?t.jsx(t.Fragment,{children:t.jsx("img",{className:s,src:r,alt:"Img"})}):t.jsx(t.Fragment,{})};export{g as default};
