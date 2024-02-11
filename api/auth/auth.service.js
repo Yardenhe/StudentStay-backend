@@ -36,8 +36,8 @@ async function login(email, password) {
     if (!user) throw 'Unkown email'
 
     //  un-comment for real login
-    // const match = await bcrypt.compare(password, user.password)
-    // if (!match) throw 'Invalid email or password'
+    const match = await bcrypt.compare(password, user.password)
+    if (!match) throw 'Invalid email or password'
 
     // Removing passwords and personal data
     const miniUser = {

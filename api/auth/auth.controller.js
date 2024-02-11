@@ -12,15 +12,15 @@ export async function login(req, res) {
         res.json(user)
     } catch (err) {
         loggerService.error('Failed to Login ' + -err)
-        res.status(401).send({ err: 'Failed to Login' })
+        res.status(400).send({ err: 'Failed to Login' })
     }
 }
 
 export async function signup(req, res) {
     try {
         const credentials = req.body
-            // Never log passwords
-            // loggerService.debug(credentials)
+        // Never log passwords
+        // loggerService.debug(credentials)
         const account = await authService.signup(credentials)
         loggerService.debug(`auth.route - new account created: ` + JSON.stringify(account))
 
